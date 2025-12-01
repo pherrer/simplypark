@@ -2,7 +2,7 @@
 Senior Design: SimplyPark Software [WIP]
 
 ## basic architecture:
-Sensor (ESP32) → Wi-Fi → Backend API (Django + DRF) → MySQL → Frontend (HTML/JS map / kiosk).
+Sensor (ESP32) → Wi-Fi → Backend API (Django + DRF) → SQLite → Frontend (HTML/JS map / kiosk).
 
 ## description:
 
