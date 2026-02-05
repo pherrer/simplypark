@@ -18,6 +18,8 @@ for alpha prototype, youtube link for how to make a basic grid on html: https://
 
 we can also use this for the alpha prototype, this is a simpler html: https://www.w3schools.com/css/css_grid.asp
 
+how to put an html website online: https://www.youtube.com/watch?v=p1QU3kLFPdg
+
 what we need to do
 - frontend html page ; connected to the parking spots state changes
 - make basic html grid (doesnt need to be accurate to babbio garage yet, this is alpha prototype)
