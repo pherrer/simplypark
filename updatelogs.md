@@ -13,7 +13,8 @@ youtube links: https://www.youtube.com/watch?v=1Ve3KB2Jxgg
 j look up django and html and similar stuff
 
 youtube link for how to make a basic grid on html: https://www.kirupa.com/css/creating_3x3_grid.htm
-we can use this for the alpha prototype
+
+we can use this for the alpha prototype, this is a simpler html: https://www.w3schools.com/css/css_grid.asp
 
 what we need to do
 - frontend html page ; connected to the parking spots state changes
