@@ -12,6 +12,9 @@ this HTML part will then be added into the django backend part.
 youtube links: https://www.youtube.com/watch?v=1Ve3KB2Jxgg
 j look up django and html and similar stuff
 
+youtube link for how to make a basic grid on html: https://www.kirupa.com/css/creating_3x3_grid.htm
+we can use this for the alpha prototype
+
 what we need to do
 - frontend html page ; connected to the parking spots state changes
 - make basic html grid (doesnt need to be accurate to babbio garage yet, this is alpha prototype)
