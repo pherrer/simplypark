@@ -3,6 +3,15 @@
 ## 2/3/2026:
 - made database w/ python django
 
+## 2/5/2025
+
+to do : build out HTML template (map part of the website. doesn't need to be accurate at this point. maybe make just 3 spots.) 
+
+this HTML part will then be added into the django backend part. 
+
+youtube links: https://www.youtube.com/watch?v=1Ve3KB2Jxgg
+j look up django and html and similar stuff
+
 what we need to do
 - frontend html page ; connected to the parking spots state changes
 - make basic html grid (doesnt need to be accurate to babbio garage yet, this is alpha prototype)
