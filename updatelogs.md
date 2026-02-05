@@ -12,6 +12,8 @@ this HTML part will then be added into the django backend part.
 youtube links: https://www.youtube.com/watch?v=1Ve3KB2Jxgg
 j look up django and html and similar stuff
 
+another youtube link : https://www.youtube.com/watch?v=tG0F9ccr-4E
+
 for alpha prototype, youtube link for how to make a basic grid on html: https://www.kirupa.com/css/creating_3x3_grid.htm
 
 we can also use this for the alpha prototype, this is a simpler html: https://www.w3schools.com/css/css_grid.asp
