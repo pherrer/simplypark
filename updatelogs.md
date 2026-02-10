@@ -41,8 +41,8 @@ what this does
 
 
 who uses this url
-- hardware team - they send sensor updates to **POST https://[ngrok.io url]/api/update_spot/** which allows the ESP32 to reach the backend over the interwebz
-- frontend - get occupancy data from **GET https://[ngrok.io url]/api/spots/** so the website can load data no matter where it's hosted
+- hardware team - u send sensor updates to **POST https://[ngrok.io url]/api/update_spot/** which allows the ESP32 to reach the backend over the interwebz
+- frontend - u get occupancy data from **GET https://[ngrok.io url]/api/spots/** so the frontend map website can load data no matter where it's hosted
 
 **BIG IMPORTANT NOTE: the ngrok url changes each time i restart it. i'll send the new url before demos so we can paste it in**
 
