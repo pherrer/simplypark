@@ -32,8 +32,36 @@ decided to use ngrok to workaround ports being blocked
 - created temp public url and forwards traffic to localhost : 8000
 - so the esp32 and the frontend stuff can access the backend w/o touching the firewall
 
-<img width="1465" height="587" alt="image" src="https://github.com/user-attachments/assets/650e2e09-24ac-40e5-bd47-5ba886d611f3" />
+what this does
+- rn we have one backend server (django) w/ two endpoints (GET/api/spots => frontend and POST/api/update_spot =>hardware)
+- firewall blocks inbound connections so outside devices cant reach my laotop
+- ngrok creates a public url that forwards to my local django server
+- basically the same backend and same endpoints but a diff address
+- ngrok gives the backend a public door. sensors write data thru the door and the frontend reads that data thru the door
 
+
+who uses this url
+- hardware team - they send sensor updates to **POST https://[ngrok.io url]/api/update_spot/** which allows the ESP32 to reach the backend over the interwebz
+- frontend - get occupancy data from **GET https://[ngrok.io url]/api/spots/** so the website can load data no matter where it's hosted
+
+**BIG IMPORTANT NOTE: the ngrok url changes each time i restart it. i'll send the new url before demos so we can paste it in**
+
+what to do for runtime:
+1) run django normally (python manage.py runserver)
+2) in a second terninal, run ngrok (ngrok http 8000)
+3) copy the **forwarding https://[urlhere.ngrok.io] -> http://localhost:8000** URL
+4) frontend and backend replace http://127.0.0.1:8000 with https://[urlhere.ngrok.io] instead. NOTE THAT EVERYTHING AFTER /api/... REMAINS THE SAME!!!!
+
+---------------------------------------------
+soooo.... **what's been done so far??????**
+- django backend is running locally and exposed via REST
+- i got an sql lite database and migrations
+- parkingspot model has been done (basically the variable)
+- the REST api is working (GET /spots/ and POST/update_spot/)
+- the admin interface is chilling
+- the ngrok tunnel system is working, there are public URLS available for hardware POST and frontend GET
+
+---------------------------------------------
 
 ref image for the front end website:
 
