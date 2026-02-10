@@ -31,5 +31,5 @@ what we need to do
 ref image for the front end website:
 
 <img width="1024" height="436" alt="image" src="https://github.com/user-attachments/assets/89aaf31a-1f48-403c-a9f2-6c524ec6e758" />
-[credit: parking structures design from transform transport](https://transformtransport.org/media/articles/parking-structures-design/)
+(credit: parking structures design from transform transport)[https://transformtransport.org/media/articles/parking-structures-design/]
 
