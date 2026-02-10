@@ -26,3 +26,9 @@ what we need to do
 - tie the backend state changes to the frontend visual updates (to test we can push updates manually on the backend, no hardware needed yet)
 - when hardware is testable, tie the backend to the arduino code (research how to do this, direct collab w/ hardware for this)
 
+## 2/9/2026
+
+ref image for the front end website:
+
+<img width="1024" height="436" alt="image" src="https://github.com/user-attachments/assets/89aaf31a-1f48-403c-a9f2-6c524ec6e758" />
+
