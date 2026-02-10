@@ -32,6 +32,9 @@ decided to use ngrok to workaround ports being blocked
 - created temp public url and forwards traffic to localhost : 8000
 - so the esp32 and the frontend stuff can access the backend w/o touching the firewall
 
+<img width="1465" height="587" alt="image" src="https://github.com/user-attachments/assets/650e2e09-24ac-40e5-bd47-5ba886d611f3" />
+
+
 ref image for the front end website:
 
 <img width="1024" height="436" alt="image" src="https://github.com/user-attachments/assets/89aaf31a-1f48-403c-a9f2-6c524ec6e758" />
