@@ -3,7 +3,7 @@
 ## 2/3/2026:
 - made database w/ python django
 
-## 2/5/2025:
+## 2/5/2026:
 
 to do : build out HTML template (map part of the website. doesn't need to be accurate at this point. maybe make just 3 spots.) 
 
@@ -69,7 +69,7 @@ ref image for the front end website:
 
 [credit: parking structures design from transform transport](https://transformtransport.org/media/articles/parking-structures-design/)
 
-## 2/18/2025
+## 2/18/2026
 
 **how to connect backend to hardware???**
 
@@ -95,6 +95,12 @@ hardware stuff:
 
 backend stuff:
 
+## 2/19/2026
+
+hardware: 
+1) Code works in Arduino IDE to pickup distance readings from the ultrasonic sensor
+2) we are waiting on wifi esp 32 board to connect to backend
+3) begining to work on solidworks sensor chasis
 
 
 
