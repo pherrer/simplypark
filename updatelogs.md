@@ -3,7 +3,7 @@
 ## 2/3/2026:
 - made database w/ python django
 
-## 2/5/2025
+## 2/5/2025:
 
 to do : build out HTML template (map part of the website. doesn't need to be accurate at this point. maybe make just 3 spots.) 
 
@@ -68,4 +68,35 @@ ref image for the front end website:
 <img width="1024" height="436" alt="image" src="https://github.com/user-attachments/assets/89aaf31a-1f48-403c-a9f2-6c524ec6e758" />
 
 [credit: parking structures design from transform transport](https://transformtransport.org/media/articles/parking-structures-design/)
+
+## 2/5/2025
+
+**how to connect backend to hardware???**
+
+hardware stuff:
+1) map spots; sensor to spot number assignment (for ex const int SPOT_ID = 1;)
+2) note that echo pin outputs 5V. our ESP32-S3 uses 3.3 V MAXIMUM so we have to use a voltage divider
+3) coding stuff:
+- gotta connect to wifi, compute state (occupied/non-occupied), POSTs only when status changes, and connect w backend via ngrok
+- make sure to make the update url out to ngrokURL+/update_spot/
+- use the right spot ID
+
+  helpful links for reference:
+  - https://learn.sparkfun.com/tutorials/sending-sensor-data-over-wifi
+  - https://randomnerdtutorials.com/esp32-client-server-wi-fi/
+  - https://www.youtube.com/watch?v=13Crtvr85lE
+  - https://www.youtube.com/watch?v=6zbEVAXVBjI     CONNECTING ESP32 to WIFI!
+  - https://www.youtube.com/watch?v=Gv4_YmXoh-A     Creating a Wireless Network with ESP32 using Arduino: AP Mode Walkthrough
+  - https://randomnerdtutorials.com/esp32-http-get-post-arduino/    ESP32 HTTP GET and HTTP POST with Arduino IDE (JSON, URL Encoded, Text)
+
+
+    using ultrasonic sensor w/ esp32: https://randomnerdtutorials.com/esp32-hc-sr04-ultrasonic-arduino/
+
+
+backend stuff:
+
+
+
+
+
 
