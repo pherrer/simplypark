@@ -5,7 +5,7 @@ Senior Design: SimplyPark Software [WIP]
 Sensor (ESP32) → Wi-Fi → Backend API (Django + DRF) → SQLite → Frontend (HTML/JS map / kiosk).
 
 ## description:
-### Software:
+I. Software:
 this github repo contains the code for the software portion of simplypark. it aims to:
 - collect sensor readings
 - organize sensor readings
@@ -13,7 +13,7 @@ this github repo contains the code for the software portion of simplypark. it ai
 - log the data in mysql
 - connect the backend with the frontend website to produce a dynamic, customizeable garage map
 
-### Hardware:
+II. Hardware:
 This github repo additionally contains the hardware aspect for the simplypark sensor device. it aims to:
 - measure the distance from the ceiling to the ground
 - send a signal when the distance is less than that maximum measured distance
