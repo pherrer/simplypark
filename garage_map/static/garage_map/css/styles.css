@@ -1,0 +1,279 @@
+/* Purpose: Provide styling for the garage map page and SVG overlay. It defines layout, colors, and spot classes. */
+
+/**
+ * Root Variables Definition
+ * Contains custom CSS properties used throughout the stylesheet
+ * for consistent theming and styling across the application
+ */
+:root {
+  --bg: #0b1020;
+  --panel: #121a33;
+  --text: #e8ecff;
+  --muted: #aab3d6;
+
+  --available: #2ecc71;
+  --occupied: #e74c3c;
+
+  --spot: #1a2550;
+  --spotBorder: rgba(255, 255, 255, 0.08);
+}
+
+
+/* Global Styles
+ * Applies to all elements to ensure consistent box-sizing and base styles
+ */
+* {
+  box-sizing: border-box;
+}
+
+/* Body Styles
+ * Sets the base font, background color, and text color for the entire page
+ */
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Topbar Styles
+ * Defines the layout and appearance of the top navigation bar, including spacing and background
+ */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  padding: 12px 16px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Heading Styles
+ * Styles for the main heading and subtitle in the topbar, including font size and color
+ */
+h1 {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Subtitle Styles
+ * Styles for the subtitle text under the main heading, including color and spacing
+ */
+.subtitle {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+/* Stats Container Styles
+ * Defines the layout for the statistics section in the topbar, including spacing and alignment
+ */
+.stats {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* Individual Stat Styles
+ * Styles for each statistic box, including background, border, padding, and minimum width
+ */
+.stat {
+  background: var(--panel);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 7px 9px;
+  border-radius: 12px;
+  min-width: 120px;
+}
+
+/* Label Styles
+ * Styles for the label text within each statistic box, including color and font size
+ */
+.label {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* Value Styles
+ * Styles for the value text within each statistic box, including font size and spacing
+ */
+.value {
+  font-size: 18px;
+  margin-top: 4px;
+}
+
+/* Small Value Styles
+ * Additional styles for smaller value text, used for secondary statistics, including color and font size
+ */
+.value.small {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Wrap Styles
+ * Defines the main content wrapper for the page, including padding and maximum width for layout consistency
+ */
+.wrap {
+  padding: 12px 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Legend Styles
+ * Styles for the legend section that explains the color coding of parking spots, including layout and typography
+ */
+.legend {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Pill Styles
+ * Styles for the small circular indicators used in the legend to represent available and occupied spots, including size and border
+ */
+.pill {
+  width: 16px;
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Available Pill Styles
+ * Specific styles for the pill representing available parking spots, including background color
+ */
+.pill.available {
+  background: var(--available);
+}
+
+/* Occupied Pill Styles
+ * Specific styles for the pill representing occupied parking spots, including background color
+ */
+.pill.occupied {
+  background: var(--occupied);
+}
+
+/* Grid Styles
+ * Defines the layout for the grid of parking spots, including the number of columns and gap between items
+ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(40px, 1fr));
+  gap: 6px;
+}
+
+/* Spot Styles
+ * Styles for each individual parking spot in the grid, including background, border, padding, and layout for content
+ */
+.spot {
+  background: var(--spot);
+  border: 1px solid var(--spotBorder);
+  border-radius: 8px;
+  padding: 4px 3px;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: default;
+}
+
+/* Spot ID Styles
+ * Styles for the text displaying the parking spot ID, including font weight and letter spacing for emphasis
+ */
+.spot .id {
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  font-size: 11px;
+}
+
+/* Spot Dot Styles
+ * Styles for the small circular indicator within each parking spot that shows availability, including size and border
+ */
+.spot .dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Available Spot Dot Styles
+ * Specific styles for the dot indicating an available parking spot, including background color
+ */
+.spot.available .dot {
+  background: var(--available);
+}
+
+/* Occupied Spot Dot Styles
+ * Specific styles for the dot indicating an occupied parking spot, including background color
+ */
+.spot.occupied .dot {
+  background: var(--occupied);
+}
+
+/* Responsive Styles
+ * Adjusts the grid layout for smaller screen sizes to ensure usability and readability on mobile devices
+ */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(40px, 1fr));
+  }
+}
+
+/* Map Shell Styles
+ * Defines the container for the garage map, including layout, border, and background for a polished appearance
+ */
+.map-shell {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Map Background Styles
+ * Styles for the background image of the garage map, ensuring it fills the container and maintains aspect ratio
+ */
+.map-bg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Map Overlay Styles
+ * Defines the container for the SVG overlay on top of the map background, allowing for absolute positioning of parking spot indicators
+ */
+.map-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Map Spot Styles
+ * Base styles for the SVG elements representing parking spots on the map, including opacity and stroke for visibility
+ */
+.map-spot {
+  opacity: 0.85;
+  stroke: rgba(0, 0, 0, 0.35);
+  stroke-width: 1;
+}
+
+/* Available Map Spot Styles
+ * Specific styles for the SVG elements representing available parking spots, including fill color
+ */
+.map-spot.available {
+  fill: var(--available);
+}
+
+/* Occupied Map Spot Styles
+ * Specific styles for the SVG elements representing occupied parking spots, including fill color
+ */
+.map-spot.occupied {
+  fill: var(--occupied);
+}

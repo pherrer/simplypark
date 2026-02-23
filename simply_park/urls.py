@@ -1,4 +1,5 @@
-"""
+"""Purpose: Top-level URL routing for the Django project. It wires admin, API, and map routes.
+
 URL configuration for simply_park project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -22,7 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path ('', include('api.urls')),
     path('api-auth/', include('rest_framework.urls')),
-    path("api/", include("api.urls")) #wiring the url on the project level
+    path("api/", include("api.urls")),
+    path("map/", include("garage_map.urls")),
 ]
 
 #ask IT to do this

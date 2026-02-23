@@ -1,3 +1,4 @@
+# Purpose: Register models with the Django admin. It lets ParkingSpot show up in the admin UI.
 from django.contrib import admin
 from .models import ParkingSpot
 # Register your models here.

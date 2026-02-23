@@ -1,4 +1,5 @@
-"""
+"""Purpose: WSGI entry point for deploying the Django app. It exposes the application object for WSGI servers.
+
 WSGI config for simply_park project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.

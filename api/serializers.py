@@ -1,3 +1,4 @@
+# Purpose: Define DRF serializers for ParkingSpot. It converts model objects to and from JSON.
 from rest_framework import serializers
 from .models import ParkingSpot
 

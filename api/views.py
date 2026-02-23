@@ -1,3 +1,4 @@
+# Purpose: Define API endpoints for reading and updating spot status. It returns JSON responses for clients.
 from django.shortcuts import render
 from django.http import JsonResponse
 

@@ -1,3 +1,4 @@
+# Purpose: Define database models for parking spots. It describes stored fields and behaviors.
 from django.db import models
 
 # Create your models here.
