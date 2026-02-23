@@ -1,0 +1,55 @@
+<!-- Purpose: HTML template for the garage map page. It loads static assets and defines the map container. -->
+
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>SimplyPark Garage Map</title>
+
+    <link rel="stylesheet" href="{% static 'garage_map/css/styles.css' %}" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>SimplyPark</h1>
+        <div class="subtitle">Garage map prototype (not real-time)</div>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="label">Available</div>
+          <div id="availableCount" class="value">0</div>
+        </div>
+        <div class="stat">
+          <div class="label">Occupied</div>
+          <div id="occupiedCount" class="value">0</div>
+        </div>
+        <div class="stat">
+          <div class="label">Last updated</div>
+          <div id="lastUpdated" class="value small">Loading</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="legend">
+        <div class="pill available"></div><span>Available</span>
+        <div class="pill occupied"></div><span>Occupied</span>
+      </section>
+
+      <section class="map-shell" aria-label="Garage map">
+        <img id="mapBg" class="map-bg" alt="Garage layout" />
+        <svg id="mapOverlay" class="map-overlay" xmlns="http://www.w3.org/2000/svg"></svg>
+      </section>
+    </main>
+
+    <script>
+      window.GARAGE_LAYOUT_URL = "{% static 'garage_map/assets/garage_layout.json' %}?v={% now 'U' %}";
+      window.GARAGE_BG_URL = "{% static 'garage_map/assets/floor1.png' %}?v={% now 'U' %}";
+    </script>
+    <script src="{% static 'garage_map/js/api_mock.js' %}"></script>
+    <script src="{% static 'garage_map/js/app.js' %}"></script>
+  </body>
+</html>

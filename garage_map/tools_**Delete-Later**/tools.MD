@@ -1,0 +1,3 @@
+# Tools folder explanation file
+
+Basically in this folder you could delete it once there is more stuff done but the only reason it exist is because I wanted to convert the csv file to a json and I didn't wat to mess up the main codebase. So I just made a separate file to do the conversion and then I deleted the csv file once I got the json file. So this folder is basically just for temporary tools that I use to convert files or do other things that are not directly related to the main codebase.

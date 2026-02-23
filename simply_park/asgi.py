@@ -1,4 +1,5 @@
-"""
+"""Purpose: ASGI entry point for async servers. It exposes the application object for ASGI servers.
+
 ASGI config for simply_park project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.

@@ -1,0 +1,3 @@
+# Garage_Layout.json explanation file
+
+Hi Paula or whoever is reading this, please be really careful with garage_layout.json. I spent a lot of time taking measurements and making pixel changes to make sure the parking spots are in the right place. If you change x or y values because you want to make them more accurate then that's fine but I really hope it helps for the future. If you change the x or y values, please make sure to change them in garage_layout.json and not garage_layout.MD. The .MD file is just for reference and is not used by the code.

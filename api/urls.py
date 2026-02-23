@@ -1,3 +1,4 @@
+# Purpose: Route API URLs to view functions. It defines the spot list and update endpoints.
 from django.urls import path
 from .views import get_spots, update_spot
 

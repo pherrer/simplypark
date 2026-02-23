@@ -1,3 +1,4 @@
+# Purpose: App configuration for the API app. It sets default settings like the app name.
 from django.apps import AppConfig
 
 
