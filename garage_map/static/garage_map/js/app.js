@@ -1,5 +1,5 @@
 /* Purpose: Render the garage map SVG and update spot colors. It loads the layout JSON and polls the mock data provider. */
-const REFRESH_MS = 700;
+const REFRESH_MS = typeof window.getMockRefreshInterval === "function" ? window.getMockRefreshInterval() : 900;
 
 const availableEl = document.getElementById("availableCount");
 const occupiedEl = document.getElementById("occupiedCount");

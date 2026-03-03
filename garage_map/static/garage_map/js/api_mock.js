@@ -50,6 +50,11 @@ const BUSYNESS_PRESETS = {
 };
 
 const SPEED_PRESETS = {
+  // Very slow updates for a calm, natural feel.
+  very_slow: {
+    interval_ms: 3000
+  },
+
   // Slower updates means it feels calmer, but it can look "stuck" during demos.
   slow: {
     interval_ms: 1600
@@ -70,7 +75,7 @@ const SPEED_PRESETS = {
 // Change these if you want a different starting point, or use setMockConfig() in the console.
 const CONFIG = {
   busyness: "normal_busy",
-  speed: "medium"
+  speed: "very_slow"
 };
 
 function _getBusyness() {
@@ -191,7 +196,13 @@ function setMockConfig(next) {
   _startTimer();
 }
 
+// Get the current refresh interval based on speed config.
+function getMockRefreshInterval() {
+  return _getSpeed().interval_ms;
+}
+
 // Expose to window so app.js can call them.
 window.initMockSpotIds = initMockSpotIds;
 window.getSpotState = getSpotState;
 window.setMockConfig = setMockConfig;
+window.getMockRefreshInterval = getMockRefreshInterval;
