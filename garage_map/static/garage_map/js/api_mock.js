@@ -22,6 +22,7 @@
 // Config
 // ------------------------------
 
+/**
 const BUSYNESS_PRESETS = {
   // Lower occupied_start means more green at the beginning.
   // Lower flip_chance means the lot changes less dramatically.
@@ -170,16 +171,11 @@ _startTimer();
 
 // This simulates fetching the current state of all parking spots.
 // It returns an object with the level_id, last_updated timestamp, and a list of spots with their id and status.
+// Fetch real-time parking data from backend
 async function getSpotState() {
-  const spots = Array.from(_mockSpots.values())
-    .map(s => ({ id: s.id, status: s.status }))
-    .sort((a, b) => a.id.localeCompare(b.id));
-
-  return {
-    level_id: "L1",
-    last_updated: new Date().toISOString(),
-    spots
-  };
+  const res = await fetch("/get_spots/");
+  if (!res.ok) throw new Error("Failed to fetch spots");
+  return await res.json();
 }
 
 // Optional helper: you can change the simulation without touching the file.
@@ -203,6 +199,14 @@ function getMockRefreshInterval() {
 
 // Expose to window so app.js can call them.
 window.initMockSpotIds = initMockSpotIds;
-window.getSpotState = getSpotState;
+
+async function getSpotState() {
+  const res = await fetch("/get_spots/");
+  const data = await res.json();
+  return data;
+}
+
 window.setMockConfig = setMockConfig;
 window.getMockRefreshInterval = getMockRefreshInterval;
+
+*/

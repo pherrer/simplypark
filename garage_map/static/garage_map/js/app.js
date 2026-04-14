@@ -1,5 +1,6 @@
+/*
 /* Purpose: Render the garage map SVG and update spot colors. It loads the layout JSON and polls the mock data provider. */
-const REFRESH_MS = typeof window.getMockRefreshInterval === "function" ? window.getMockRefreshInterval() : 900;
+const REFRESH_MS = 1000; // 1 second refresh
 
 const availableEl = document.getElementById("availableCount");
 const occupiedEl = document.getElementById("occupiedCount");
@@ -52,11 +53,14 @@ function buildSvg(layout) {
     svgEl.appendChild(rect);
     spotEls.set(s.id, rect);
   }
-
-  if (typeof window.initMockSpotIds === "function") {
-    window.initMockSpotIds(layout.spots.map(s => s.id));
-  }
 }
+
+async function getSpotState() {
+  const res = await fetch("/get_spots/");
+  if (!res.ok) throw new Error("Failed to fetch spots");
+  return await res.json();
+}
+
 
 async function loadLayout() {
   const url = window.GARAGE_LAYOUT_URL;
@@ -76,11 +80,16 @@ function applyStatuses(spots) {
 
 async function tick() {
   try {
-    if (typeof window.getSpotState !== "function") return;
-    const data = await window.getSpotState();
-    applyStatuses(data.spots);
-    updateStats(data.spots, data.last_updated);
+    const data = await getSpotState();
+
+    const spots = data.spots || [];
+    const lastUpdated = data.last_updated || null;
+
+    applyStatuses(spots);
+    updateStats(spots, lastUpdated);
+
   } catch (e) {
+    console.error(e);
     lastUpdatedEl.textContent = "Error";
   }
 }
@@ -95,3 +104,5 @@ async function tick() {
     lastUpdatedEl.textContent = "Layout error";
   }
 })();
+
+console.log("Backend data:", data);
