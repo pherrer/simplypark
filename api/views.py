@@ -26,22 +26,29 @@ def get_spots(request):
 @api_view(["POST"])
 def update_spot(request):
     spot_id = request.data.get("spot_id")
-    occupied = request.data.get("occupied")
+    status_value = request.data.get("status", "unknown")
 
-    if spot_id is None or occupied is None:
+    if spot_id is None:
         return Response(
-            {"error: spot_id and occupied are required"},
+            {"error: spot_id and status are required"},
             status = status.HTTP_400_BAD_REQUEST
         )
+    
+    if status_value not in ["available", "occupied", "unknown"]:
+        return Response(
+            {"error": "invalid status"},
+            status=status.HTTP_400_BAD_REQUEST
+        )
+    
     spot , created = ParkingSpot.objects.get_or_create(spot_id = spot_id)
-    spot.occupied = bool(occupied)
+    spot.status = status_value
     spot.save()
 
     return Response(
         {
             "status": "ok",
             "spot_id": spot.spot_id,
-            "occupied" : spot.occupied,
+            "status" : spot.status,
             "created" : created
         },
         status = status.HTTP_200_OK

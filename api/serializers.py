@@ -7,4 +7,4 @@ from .models import ParkingSpot
 class ParkingSpotSerializer(serializers.ModelSerializer):
     class Meta:
         model = ParkingSpot
-        fields = ["spot_id", "occupied", "updated_at"]
+        fields = ["spot_id", "status", "updated_at"]

@@ -213,6 +213,10 @@ h1 {
   background: var(--occupied);
 }
 
+.spot.unknown {
+  background: var(--spot);
+}
+
 /* Responsive Styles
  * Adjusts the grid layout for smaller screen sizes to ensure usability and readability on mobile devices
  */
@@ -276,4 +280,8 @@ h1 {
  */
 .map-spot.occupied {
   fill: var(--occupied);
+}
+
+.map-spot.unknown { 
+  fill: var(--spot); 
 }

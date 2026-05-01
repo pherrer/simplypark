@@ -5,8 +5,8 @@ from .models import ParkingSpot
 
 @admin.register(ParkingSpot)
 class ParkingSpotAdmin(admin.ModelAdmin):
-    list_display = ("spot_id", "occupied", "updated_at")
-    list_filter = ("occupied",)
+    list_display = ("spot_id", "status", "updated_at")
+    list_filter = ("status",)
     search_fields = ("spot_id",)
     ordering = ("spot_id",)
 

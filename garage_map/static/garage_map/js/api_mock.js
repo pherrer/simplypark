@@ -18,11 +18,15 @@
   Defaults are set to NORMAL BUSY + MEDIUM SPEED because that usually looks the most real.
 */
 
+
+
 // ------------------------------
 // Config
 // ------------------------------
 
-/**
+
+/*
+
 const BUSYNESS_PRESETS = {
   // Lower occupied_start means more green at the beginning.
   // Lower flip_chance means the lot changes less dramatically.
@@ -210,3 +214,95 @@ window.setMockConfig = setMockConfig;
 window.getMockRefreshInterval = getMockRefreshInterval;
 
 */
+
+/*
+  Purpose: API layer for fetching real parking sensor data from backend.
+  ESP32 devices send updates to backend; frontend only consumes state.
+*/
+
+// ------------------------------
+// CONFIG
+// ------------------------------
+
+// If you ever need fallback behavior later, you can toggle this.
+const USE_MOCK_FALLBACK = false;
+
+// ------------------------------
+// API CALL
+// ------------------------------
+
+/**
+ * Fetch current parking spot state from backend.
+ * Backend is responsible for ESP32 sensor ingestion.
+ */
+async function getSpotState() {
+  try {
+    const res = await fetch("/get_spots/");
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch spot data from backend");
+    }
+
+    const data = await res.json();
+
+    return {
+      level_id: data.level_id || "unknown",
+      last_updated: data.last_updated || null,
+      spots: (data.spots || []).map(s => ({
+        id: s.id,
+        status: normalizeStatus(s.status)
+      }))
+    };
+
+  } catch (err) {
+    console.error("API error:", err);
+
+    if (USE_MOCK_FALLBACK) {
+      return getMockFallback();
+    }
+
+    return {
+      level_id: "error",
+      last_updated: null,
+      spots: []
+    };
+  }
+}
+
+// ------------------------------
+// NORMALIZATION (IMPORTANT)
+// ------------------------------
+
+/**
+ * Ensures UI always receives valid states.
+ * ESP32/backend might send:
+ * - available
+ * - occupied
+ * - unknown
+ * - null / undefined
+ */
+function normalizeStatus(status) {
+  if (status === "available") return "available";
+  if (status === "occupied") return "occupied";
+
+  // everything else = no sensor / offline
+  return "unknown";
+}
+
+// ------------------------------
+// OPTIONAL FALLBACK (ONLY FOR DEV)
+// ------------------------------
+
+function getMockFallback() {
+  return {
+    level_id: "mock",
+    last_updated: new Date().toISOString(),
+    spots: []
+  };
+}
+
+// ------------------------------
+// PUBLIC EXPORTS
+// ------------------------------
+
+window.getSpotState = getSpotState;

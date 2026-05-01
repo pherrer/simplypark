@@ -73,8 +73,9 @@ function applyStatuses(spots) {
   for (const s of spots) {
     const el = spotEls.get(s.id);
     if (!el) continue;
-    el.classList.remove("available", "occupied");
-    el.classList.add(s.status);
+    el.classList.remove("available", "occupied", "unknown");
+    const status = s.status || "unknown";
+    el.classList.add(status);
   }
 }
 

@@ -13,10 +13,19 @@ from django.db import models
 # then do the DRF serializer
 
 class ParkingSpot(models.Model):
+    STATUS_CHOICES = [
+        ("available", "Available"),
+        ("occupied", "Occupied"),
+        ("unknown", "Unknown"),
+    ]
+
     spot_id = models.IntegerField(unique=True)
-    occupied = models.BooleanField(default=False)
+    status = models.CharField(
+        max_length=10, 
+        choices=STATUS_CHOICES, 
+        default="unknown"
+    )
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        status = "Occupied" if self.occupied else "Free"
-        return f"Spot {self.spot_id} - {status}"
+        return f"Spot {self.spot_id} - {self.status}"
