@@ -13,6 +13,7 @@
 
   --available: #2ecc71;
   --occupied: #e74c3c;
+  --unknown: #3498db;
 
   --spot: #1a2550;
   --spotBorder: rgba(255, 255, 255, 0.08);
@@ -156,6 +157,10 @@ h1 {
   background: var(--occupied);
 }
 
+.pill.unknown {
+  background: var(--unknown);
+}
+
 /* Grid Styles
  * Defines the layout for the grid of parking spots, including the number of columns and gap between items
  */
@@ -213,8 +218,8 @@ h1 {
   background: var(--occupied);
 }
 
-.spot.unknown {
-  background: var(--spot);
+.spot.unknown .dot {
+  background: var(--unknown);
 }
 
 /* Responsive Styles
@@ -283,5 +288,5 @@ h1 {
 }
 
 .map-spot.unknown { 
-  fill: var(--spot); 
+  fill: var(--unknown); 
 }

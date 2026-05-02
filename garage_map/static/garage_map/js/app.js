@@ -56,7 +56,7 @@ function buildSvg(layout) {
 }
 
 async function getSpotState() {
-  const res = await fetch("/get_spots/");
+  const res = await fetch("/spots/");
   if (!res.ok) throw new Error("Failed to fetch spots");
   return await res.json();
 }
@@ -80,14 +80,16 @@ function applyStatuses(spots) {
 }
 
 async function tick() {
-  try {
+    try {
     const data = await getSpotState();
 
-    const spots = data.spots || [];
-    const lastUpdated = data.last_updated || null;
+    const spots = Object.entries(data).map(([id, status]) => ({
+      id,
+      status
+    }));
 
     applyStatuses(spots);
-    updateStats(spots, lastUpdated);
+    updateStats(spots, new Date().toISOString());
 
   } catch (e) {
     console.error(e);
@@ -106,4 +108,3 @@ async function tick() {
   }
 })();
 
-console.log("Backend data:", data);

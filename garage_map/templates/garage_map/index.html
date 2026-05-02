@@ -8,13 +8,12 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>SimplyPark Garage Map</title>
 
-    <link rel="stylesheet" href="{% static 'garage_map/css/styles.css' %}" />
-  </head>
+    <link rel="stylesheet" href="{% static 'garage_map/css/styles.css' %}?v={% now 'U' %}" />  </head>
   <body>
     <header class="topbar">
       <div>
         <h1>SimplyPark</h1>
-        <div class="subtitle">Garage map prototype (not real-time)</div>
+        <div class="subtitle">Garage map  (real-time)</div>
       </div>
 
       <div class="stats">
@@ -48,8 +47,10 @@
     <script>
       window.GARAGE_LAYOUT_URL = "{% static 'garage_map/assets/garage_layout.json' %}?v={% now 'U' %}";
       window.GARAGE_BG_URL = "{% static 'garage_map/assets/floor1.png' %}?v={% now 'U' %}";
+    
+      window.SPOT_STATUS_API = "/spots/";
     </script>
     <!-- <script src="{% static 'garage_map/js/api_mock.js' %}"></script> -->
-    <script src="{% static 'garage_map/js/app.js' %}"></script>
+    <script src="{% static 'garage_map/js/app.js' %}?v={% now 'U' %}"></script>
   </body>
 </html>
