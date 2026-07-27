@@ -1,0 +1,11 @@
+/* Import existing styles from Django static */
+/* This will be loaded alongside the existing CSS or we can inline it */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}

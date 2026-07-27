@@ -22,3 +22,42 @@ This github repo additionally contains the hardware aspect for the simplypark se
 - Turn a green LED light on to signal an empty parking space
 - Send the measured data from the sensor to the sensor reasings collection and backend API
 
+## Quick Start (New Machine)
+
+### Prerequisites
+- Python 3.11+ (recommended)
+- Node.js 20+ and npm
+
+### 1) Clone and enter the project
+```bash
+git clone <your-repo-url>
+cd simplypark
+```
+
+### 2) Backend setup (Django + DRF)
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+```
+
+Backend runs at: http://127.0.0.1:8000/
+
+### 3) Frontend setup (React + Vite)
+Open a second terminal in the repo root:
+
+```bash
+npm install
+npm run dev
+```
+
+Frontend runs at the local URL printed by Vite (usually http://127.0.0.1:5173/).
+
+## Key Files
+- `requirements.txt`: Python dependencies for backend setup
+- `package.json`: React/Vite dependencies and scripts
+- `.gitignore`: Ignores generated/local files so commits stay focused on source changes
+

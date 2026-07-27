@@ -1,13 +1,12 @@
-<!-- Purpose: HTML template for the garage map page. It loads static assets and defines the map container. -->
-
 {% load static %}
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>SimplyPark Garage Map</title>
+    <title>SimplyPark Garage Map - React</title>
 
+    <!-- Load existing CSS styles -->
     <link rel="stylesheet" href="{% static 'garage_map/css/styles.css' %}" />
     <style>
       /* Navigation styles */
@@ -62,49 +61,31 @@
       <a href="{% url 'home' %}" class="nav-logo">SimplyPark</a>
       <ul class="nav-links-list">
         <li><a href="{% url 'home' %}">Home</a></li>
-        <li><a href="{% url 'garage_map' %}" class="active">Map</a></li>
+        <li><a href="{% url 'garage_map_react' %}" class="active">Map</a></li>
       </ul>
     </nav>
 
-    <header class="topbar">
-      <div>
-        <h1>SimplyPark</h1>
-        <div class="subtitle">Garage map prototype (not real-time)</div>
-      </div>
+    <!-- React root element -->
+    <div id="root"></div>
 
-      <div class="stats">
-        <div class="stat">
-          <div class="label">Available</div>
-          <div id="availableCount" class="value">0</div>
-        </div>
-        <div class="stat">
-          <div class="label">Occupied</div>
-          <div id="occupiedCount" class="value">0</div>
-        </div>
-        <div class="stat">
-          <div class="label">Last updated</div>
-          <div id="lastUpdated" class="value small">Loading</div>
-        </div>
-      </div>
-    </header>
-
-    <main class="wrap">
-      <section class="legend">
-        <div class="pill available"></div><span>Available</span>
-        <div class="pill occupied"></div><span>Occupied</span>
-      </section>
-
-      <section class="map-shell" aria-label="Garage map">
-        <img id="mapBg" class="map-bg" alt="Garage layout" />
-        <svg id="mapOverlay" class="map-overlay" xmlns="http://www.w3.org/2000/svg"></svg>
-      </section>
-    </main>
-
+    <!-- Pass Django context to JavaScript -->
     <script>
       window.GARAGE_LAYOUT_URL = "{% static 'garage_map/assets/garage_layout.json' %}?v={% now 'U' %}";
       window.GARAGE_BG_URL = "{% static 'garage_map/assets/floor1.png' %}?v={% now 'U' %}";
     </script>
+
+    <!-- Load mock data API (keep existing mock functionality) -->
     <script src="{% static 'garage_map/js/api_mock.js' %}"></script>
-    <script src="{% static 'garage_map/js/app.js' %}"></script>
+
+    <!-- Load React bundle -->
+    {% if DEBUG %}
+      <!-- Development mode: Load from Vite dev server -->
+      <script type="module" src="http://localhost:5173/@vite/client"></script>
+      <script type="module" src="http://localhost:5173/src/main.jsx"></script>
+    {% else %}
+      <!-- Production mode: Load built assets -->
+      <script type="module" src="{% static 'garage_map/react-dist/assets/main.js' %}"></script>
+      <link rel="stylesheet" href="{% static 'garage_map/react-dist/assets/main.css' %}" />
+    {% endif %}
   </body>
 </html>
